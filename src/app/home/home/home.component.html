@@ -1,47 +1,70 @@
 <div class="main">
   <div class="input-container">
-    <form>
+    <form [formGroup]="formTemplate" (submit)="calculate(formTemplate.value)" >
       <div class="form-group">
         <div style="display: flex;">
-          <div class="col-2">
+          <div class="col-4">
             <label for="days">Days to Forecast:</label>
           </div>
-          <div class="col-4">
-            <input id="days" class="form-control" type="text">
+          <div class="col-8">
+            <input id="days" class="form-control" formControlName="days" type="text" required>
           </div>
+        </div>
+        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.days.errors?.required">
+          Days to Forecast is required.
         </div>
       </div>
 
       <div class="form-group">
         <div style="display: flex;">
-          <div class="col-2">
-            <label for="batalagoda">Status in Batalagoda:</label>
-          </div>
           <div class="col-4">
-            <input id="batalagoda" class="form-control" type="text">
+            <label for="batalagoda">RainFall in Batalagoda:</label>
           </div>
+          <div class="col-8">
+            <input id="batalagoda" class="form-control" formControlName="batalagoda" type="text" required >
+          </div>
+        </div>
+        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.batalagoda.errors?.required">
+          RainFall in Batalagoda is required.
         </div>
       </div>
 
       <div class="form-group">
         <div style="display: flex;">
-          <div class="col-2">
+          <div class="col-4">
             <label for="kurunagala">Status in Kurunagala:</label>
           </div>
-          <div class="col-4">
-            <input id="kurunagala" class="form-control" type="text">
+          <div class="col-8">
+            <input id="kurunagala" class="form-control" formControlName="kurunagala" type="text" required >
           </div>
+        </div>
+        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.kurunagala.errors?.required">
+          Status in Kurunagala is required.
         </div>
       </div>
 
       <div class="form-group">
         <div style="display: flex;">
-          <div class="col-2">
-            <label for="maspota">Status in Maspota:</label>
-          </div>
           <div class="col-4">
-            <input id="maspota" class="form-control" type="text">
+            <label for="maspota">Rainfall in Maspota:</label>
           </div>
+          <div class="col-8">
+            <input id="maspota" class="form-control" formControlName="maspota" type="text" required >
+          </div>
+        </div>
+        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.maspota.errors?.required">
+          Rainfall in Maspota is required.
+        </div>
+        <div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div style="display: flex; justify-content: flex-end">
+          <button class="btn btn-primary">
+            Calculate
+          </button>
         </div>
       </div>
     </form>
