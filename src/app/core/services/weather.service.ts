@@ -1,9 +1,32 @@
 import { Injectable } from '@angular/core';
+import {environment} from "../../../environments/environment";
+import {map} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  constructor() { }
+  constructor(private http: HttpClient,) { }
+
+  weatherData(data) {
+    return this.http
+      .post<any>(
+        `${environment.apiUrl}markov/getStates`,
+        data
+      )
+      .pipe(
+        map(
+          res => {
+            return {
+              res
+            };
+          },
+          error => {
+            return error;
+          }
+        )
+      );
+  }
 }

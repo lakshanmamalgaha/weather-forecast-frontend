@@ -1,6 +1,6 @@
 <div class="main">
   <div class="input-container">
-    <form [formGroup]="formTemplate" (submit)="calculate(formTemplate.value)" >
+    <form style="width: 60%" [formGroup]="formTemplate" (submit)="calculate(formTemplate.value)" >
       <div class="form-group">
         <div style="display: flex;">
           <div class="col-4">
@@ -68,6 +68,20 @@
         </div>
       </div>
     </form>
+  </div>
+
+  <div class="result-container">
+    <div>Results</div>
+    <div class="result" *ngFor="let w of weatherData">
+      <div>
+        <div>
+        Days: {{w.days}}
+        </div>
+        <div>
+          Start State: {{w.startState}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
