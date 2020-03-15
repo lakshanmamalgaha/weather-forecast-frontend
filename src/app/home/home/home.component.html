@@ -1,6 +1,6 @@
 <div class="main">
   <div class="input-container">
-    <form style="width: 60%" [formGroup]="formTemplate" (submit)="calculate(formTemplate.value)" >
+    <form class="form" style="width: 60%" [formGroup]="formTemplate" (submit)="calculate(formTemplate.value)">
       <div class="form-group">
         <div style="display: flex;">
           <div class="col-4">
@@ -8,10 +8,11 @@
           </div>
           <div class="col-8">
             <input id="days" class="form-control" formControlName="days" type="text" required>
+            <div class="alert alert-danger" style="margin-top: 10px"
+                 *ngIf="isSubmitted && formControls.days.errors?.required">
+              Days to Forecast is required.
+            </div>
           </div>
-        </div>
-        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.days.errors?.required">
-          Days to Forecast is required.
         </div>
       </div>
 
@@ -21,26 +22,29 @@
             <label for="batalagoda">RainFall in Batalagoda:</label>
           </div>
           <div class="col-8">
-            <input id="batalagoda" class="form-control" formControlName="batalagoda" type="text" required >
+            <input id="batalagoda" class="form-control" formControlName="batalagoda" type="text" required>
+            <div class="alert alert-danger" style="margin-top: 10px"
+                 *ngIf="isSubmitted && formControls.batalagoda.errors?.required">
+              RainFall in Batalagoda is required.
+            </div>
           </div>
-        </div>
-        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.batalagoda.errors?.required">
-          RainFall in Batalagoda is required.
         </div>
       </div>
 
       <div class="form-group">
         <div style="display: flex;">
           <div class="col-4">
-            <label for="kurunagala">Status in Kurunagala:</label>
+            <label for="kurunagala">Rainfall in Kurunagala:</label>
           </div>
           <div class="col-8">
-            <input id="kurunagala" class="form-control" formControlName="kurunagala" type="text" required >
+            <input id="kurunagala" class="form-control" formControlName="kurunagala" type="text" required>
+            <div class="alert alert-danger" style="margin-top: 10px"
+                 *ngIf="isSubmitted && formControls.kurunagala.errors?.required">
+              Status in Kurunagala is required.
+            </div>
           </div>
         </div>
-        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.kurunagala.errors?.required">
-          Status in Kurunagala is required.
-        </div>
+
       </div>
 
       <div class="form-group">
@@ -49,20 +53,42 @@
             <label for="maspota">Rainfall in Maspota:</label>
           </div>
           <div class="col-8">
-            <input id="maspota" class="form-control" formControlName="maspota" type="text" required >
+            <input id="maspota" class="form-control" formControlName="maspota" type="text" required>
+            <div class="alert alert-danger" style="margin-top: 10px"
+                 *ngIf="isSubmitted && formControls.maspota.errors?.required">
+              Rainfall in Maspota is required.
+            </div>
           </div>
         </div>
-        <div class="alert alert-danger" style="margin-top: 10px" *ngIf="isSubmitted && formControls.maspota.errors?.required">
-          Rainfall in Maspota is required.
-        </div>
+
         <div>
 
         </div>
       </div>
 
       <div class="form-group">
+        <div style="display: flex;">
+          <div class="col-4">
+            <label for="maspota">Flood Status in Chillaw:</label>
+          </div>
+          <div class="col-8">
+            <input id="currentFloodState" class="form-control" formControlName="currentFloodState" type="text" required>
+            <div class="alert alert-danger" style="margin-top: 10px"
+                 *ngIf="isSubmitted && formControls.currentFloodState.errors?.required">
+              Flood Status in Chillaw is required.
+            </div>
+          </div>
+        </div>
+
+        <div>
+
+        </div>
+      </div>
+
+      <div class="form-group" style="
+    padding-right: 15px;">
         <div style="display: flex; justify-content: flex-end">
-          <button class="btn btn-primary">
+          <button [disabled]="!formTemplate.valid" class="btn btn-primary">
             Calculate
           </button>
         </div>
@@ -70,15 +96,24 @@
     </form>
   </div>
 
-  <div class="result-container">
-    <div>Results</div>
-    <div class="result" *ngFor="let w of weatherData">
+  <div class="result-container" *ngIf="weatherData">
+    <h2>Results</h2>
+    <div class="result" *ngFor="let w of weatherData; let i = index">
       <div>
-        <div>
-        Days: {{w.days}}
+        <div class="text-center">
+          <h3>{{areas[i]}}</h3>
         </div>
         <div>
           Start State: {{w.startState}}
+        </div>
+        <div>
+          End state after {{w.days}} days: {{w.endState}}
+        </div>
+        <div>
+          Probability: {{w.probability}}
+        </div>
+        <div>
+          Accuracy : {{w.accuracy}}
         </div>
       </div>
     </div>
