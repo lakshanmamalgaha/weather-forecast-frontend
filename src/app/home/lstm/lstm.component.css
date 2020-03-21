@@ -1,0 +1,12 @@
+.theBox {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 20px 0;
+}
+
+.result{
+  padding: 40px 0;
+  box-shadow: rgba(133, 140, 148, 0.4) 0px 8px 10px, rgb(196, 199, 204) 0px 0px 2px;
+  background-color: white;
+  margin-bottom: 20px;
+}

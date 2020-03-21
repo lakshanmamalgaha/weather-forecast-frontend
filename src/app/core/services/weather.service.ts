@@ -29,4 +29,21 @@ export class WeatherService {
         )
       );
   }
+
+  getFiles = () => {
+    return this.http.get<any>(
+      `${environment.apiUrl}files`
+    ).pipe(
+      map(
+        res => {
+          return {
+            res
+          };
+        },
+        error => {
+          return error;
+        }
+      )
+    );
+  }
 }

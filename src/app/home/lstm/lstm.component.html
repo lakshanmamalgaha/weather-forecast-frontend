@@ -1,0 +1,12 @@
+<div style=" padding: 20px">
+  <div style="background: white;padding: 40px">
+    <div style="padding: 20px 0">
+      <h1>LSTM Model</h1>
+    </div>
+    <div *ngFor="let graph of graphs" class="result">
+      <div class="theBox">
+        <img style="object-fit: contain; width: 100%" [src]="API_URL+'/files/'+graph">
+      </div>
+    </div>
+  </div>
+</div>
