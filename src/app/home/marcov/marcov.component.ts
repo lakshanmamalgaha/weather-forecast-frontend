@@ -47,12 +47,12 @@ export class MarcovComponent implements OnInit {
   calculate = (value) => {
     this.isSubmitted = true;
     if(this.formTemplate.valid){
-      console.log(value);
+      //console.log(value);
       let data = {
         daysToForecast: value.days,
-        currentRainBatalagoda: value.batalagoda,
-        currentRainKurunegala: value.kurunagala,
-        currentRainMaspota:value.maspota,
+        currentRainBatalagoda: this.getStatus(value.batalagoda),
+        currentRainKurunegala: this.getStatus(value.kurunagala),
+        currentRainMaspota:this.getStatus(value.maspota),
         currentFloodState: value.currentFloodState
       };
 
@@ -60,14 +60,25 @@ export class MarcovComponent implements OnInit {
         const result = Object.keys(res.res).map(i => {
           return res.res[i]
         });
-        console.log(result)
+        ///console.log(result)
 
         this.weatherData = result;
-        console.log(typeof(this.weatherData))
+        //console.log(typeof(this.weatherData))
+        this.formTemplate.reset();
 
       })
     }
 
+  }
+
+  getStatus = (value) => {
+    if(value ===0){
+      return 'NoRain';
+    }else if(value<50){
+      return 'LightRain'
+    }else{
+      return 'HeavyRain'
+    }
   }
 
 }

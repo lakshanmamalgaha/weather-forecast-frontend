@@ -14,9 +14,17 @@ export class LstmComponent implements OnInit {
 
   ngOnInit(): void {
     this.weather.getFiles().subscribe(res=>{
-      console.log(res)
+      //console.log(res)
       this.graphs = res.res;
     })
+  }
+
+  trainModel = () => {
+    this.weather.trainLstmModel().subscribe(
+      res=>{
+        console.log(res);
+      }
+    )
   }
 
 }

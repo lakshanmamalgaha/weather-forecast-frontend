@@ -45,5 +45,22 @@ export class WeatherService {
         }
       )
     );
-  }
+  };
+
+  trainLstmModel = () => {
+    return this.http.get<any>(
+      `${environment.apiUrl}LSTM/model/train`
+    ).pipe(
+      map(
+        res => {
+          return {
+            res
+          };
+        },
+        error => {
+          return error;
+        }
+      )
+    );
+  };
 }

@@ -19,10 +19,10 @@
       <div class="form-group">
         <div style="display: flex;">
           <div class="col-4">
-            <label for="batalagoda">RainFall in Batalagoda:</label>
+            <label for="batalagoda">RainFall in Batalagoda (mm):</label>
           </div>
           <div class="col-8">
-            <input id="batalagoda" class="form-control" formControlName="batalagoda" type="text" required>
+            <input id="batalagoda" class="form-control" formControlName="batalagoda" type="number" required>
             <div class="alert alert-danger" style="margin-top: 10px"
                  *ngIf="isSubmitted && formControls.batalagoda.errors?.required">
               RainFall in Batalagoda is required.
@@ -34,10 +34,10 @@
       <div class="form-group">
         <div style="display: flex;">
           <div class="col-4">
-            <label for="kurunagala">Rainfall in Kurunagala:</label>
+            <label for="kurunagala">Rainfall in Kurunagala (mm):</label>
           </div>
           <div class="col-8">
-            <input id="kurunagala" class="form-control" formControlName="kurunagala" type="text" required>
+            <input id="kurunagala" class="form-control" formControlName="kurunagala" type="number" required>
             <div class="alert alert-danger" style="margin-top: 10px"
                  *ngIf="isSubmitted && formControls.kurunagala.errors?.required">
               Status in Kurunagala is required.
@@ -50,10 +50,10 @@
       <div class="form-group">
         <div style="display: flex;">
           <div class="col-4">
-            <label for="maspota">Rainfall in Maspota:</label>
+            <label for="maspota">Rainfall in Maspota (mm):</label>
           </div>
           <div class="col-8">
-            <input id="maspota" class="form-control" formControlName="maspota" type="text" required>
+            <input id="maspota" class="form-control" formControlName="maspota" type="number" required>
             <div class="alert alert-danger" style="margin-top: 10px"
                  *ngIf="isSubmitted && formControls.maspota.errors?.required">
               Rainfall in Maspota is required.

@@ -1,7 +1,10 @@
 <div style=" padding: 20px">
   <div style="background: white;padding: 40px">
-    <div style="padding: 20px 0">
+    <div style="padding: 20px 0" class="d-flex justify-content-between">
       <h1>LSTM Model</h1>
+      <div>
+        <button class="btn btn-primary" (click)="trainModel()">Train Model</button>
+      </div>
     </div>
     <div *ngFor="let graph of graphs" class="result">
       <div class="theBox">
