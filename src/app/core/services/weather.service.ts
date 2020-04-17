@@ -63,4 +63,21 @@ export class WeatherService {
       )
     );
   };
+
+  analyzeModel = () =>{
+    return this.http.get<any>(
+      `${environment.apiUrl}graph/LSTM/analyze`
+    ).pipe(
+      map(
+        res => {
+          return {
+            res
+          };
+        },
+        error => {
+          return error;
+        }
+      )
+    );
+  }
 }

@@ -25,6 +25,9 @@ export class LstmComponent implements OnInit {
         console.log(res);
       }
     )
+    this.weather.analyzeModel().subscribe(res=>{
+      console.log(res)
+    })
   }
 
 }
